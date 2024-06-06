@@ -31,11 +31,15 @@ jobs:
         run: |
           echo "Hello World"
 
+      - name: Request subsequent job labels
+        run: |
+          echo "secondjoblabel=thisisalabel" >> "$GITHUB_OUTPUT"
+
   second-job:
     needs: first-job
 
     # The type of runner that the job will run on
-    runs-on: thisrunnerdoesnotexist
+    runs-on: ${{ jobs.first-job.outputs.secondjoblabel }}
 
     steps:
       - name: Print hello world 2
