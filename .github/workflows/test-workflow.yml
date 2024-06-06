@@ -33,3 +33,8 @@ jobs:
 
   second-job:
     needs: first-job
+
+    steps:
+      - name: Print hello world 2
+        run: |
+          echo "Hello World 2"
