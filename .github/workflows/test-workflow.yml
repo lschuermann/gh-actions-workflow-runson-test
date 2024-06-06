@@ -39,7 +39,7 @@ jobs:
     needs: first-job
 
     # The type of runner that the job will run on
-    runs-on: ${{ jobs.first-job.outputs.secondjoblabel }}
+    runs-on: ${{ needs.first-job.outputs.secondjoblabel }}
 
     steps:
       - name: Print hello world 2
