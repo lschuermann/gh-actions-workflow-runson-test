@@ -34,6 +34,13 @@ jobs:
   second-job:
     needs: first-job
 
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+
+    # The type of runner that the job will run on
+    runs-on: ${{ matrix.os }}
+
     steps:
       - name: Print hello world 2
         run: |
